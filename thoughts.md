@@ -1,0 +1,2 @@
+- Becoming a good developer goes far beyond pure technical knowledge. Effective strategies for note-taking, time-management, and research are crucial for remaining organized and effective as the program progresses.
+- Problem-solving as a developer must be done strategically to be effective. This is where the importance of pseudo-coding comes into play, as it will be nearly impossible to come up with the proper syntax, if the problem can't be broken into discrete chunks and described in plain English first.
