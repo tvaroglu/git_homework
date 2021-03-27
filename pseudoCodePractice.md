@@ -23,8 +23,8 @@ Pseudo-code practice exercise for a function to count the number of sheep in the
 ```ruby
 # Actual function call
 def countSheep(barn)
-	true == "sheep"
-	false == "piglet"
+	# true == "sheep"
+	# false == "piglet"
 	sheepCount = 0
 
 	for animal in barn do
