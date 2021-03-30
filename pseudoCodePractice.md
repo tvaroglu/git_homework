@@ -1,5 +1,19 @@
 ```
-Pseudo-code practice exercise for a function to count the number of sheep in the barn
+PseudoCode practice to detect if a given word/string is a palindrome:
+
+function isPalindrome(string)
+- assign input string to a variable
+- iterate over the string
+  - if each character of the string read forwards and backwards is the same
+    - this is a palindrome, return true
+  - otherwise,
+   - this is not a palindrome, return false
+```
+
+
+
+```
+PseudoCode practice exercise for a function to count the number of sheep in the barn:
 
 1.)  name the variables (assumptions/givens)
   true = sheep
