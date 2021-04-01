@@ -1,4 +1,27 @@
 ```
+PseudoCode practice: Data Normalization
+
+method first_name_vs_last_name_cleanup(array_of_input_strings)
+  # create output array variable
+  # iterate over the array_of_input_strings
+    # for each string in the input array
+      # split string on '_'
+      # assign left side of string split (index 0) as new variable
+        # uppercase the first character of this string variable
+          # look at index 0 (first character of string), apply upcase method
+      # assign right side of string split (index 1) as new variable
+        # uppercase the first character of this string variable
+          # look at index 0 (first character of string), apply upcase method
+      # interpolate "#{Firstname} #{Lastname}" as new string variable
+      # add interpolated string variable to output array
+  # return output array
+```
+
+
+
+
+
+```
 PseudoCode practice to detect if a given word/string is a palindrome:
 
 function isPalindrome(string)
@@ -9,6 +32,8 @@ function isPalindrome(string)
   - otherwise,
    - this is not a palindrome, return false
 ```
+
+
 
 
 
