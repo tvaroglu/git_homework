@@ -1,6 +1,6 @@
-```
-PseudoCode practice: Data Normalization
+### PseudoCode Practice: Data Normalization
 
+```
 method first_name_vs_last_name_cleanup(array_of_input_strings)
   # create output array variable
   # iterate over the array_of_input_strings
@@ -59,13 +59,9 @@ p assertEquals(input_strings, output_strings, 'It correctly formats the input st
 
 ```
 
-
-
-
+### PseudoCode Practice: Detect if a given word/string is a palindrome
 
 ```
-PseudoCode practice to detect if a given word/string is a palindrome:
-
 function isPalindrome(string)
 - assign input string to a variable
 - iterate over the string
@@ -75,13 +71,34 @@ function isPalindrome(string)
    - this is not a palindrome, return false
 ```
 
+```ruby
+# Actual method call
+def is_palindrome(string)
+  if string == string.reverse
+    return true
+  else
+    return false
+  end
+end
 
 
+# Test suite
+def assertEquals(actual, expected, testName)
+	if actual = expected then
+		puts "passed '#{testName}': expected '#{expected}', and got '#{actual}'"
+	else
+		puts "failed '#{testName}': expected '#{expected}', but got '#{actual}'"
+	end
+end
 
+p assertEquals(is_palindrome('kayak'), true, 'It correctly returns true for a palindrome')
+p assertEquals(is_palindrome('kitten'), false, 'It correctly returns false for a non-palindrome')
+```
+
+
+### PseudoCode Practice: Count the number of sheep in the barn
 
 ```
-PseudoCode practice exercise for a function to count the number of sheep in the barn:
-
 1.)  name the variables (assumptions/givens)
   true = sheep
   false = piglet
