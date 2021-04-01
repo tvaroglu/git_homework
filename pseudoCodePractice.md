@@ -17,6 +17,48 @@ method first_name_vs_last_name_cleanup(array_of_input_strings)
   # return output array
 ```
 
+```ruby
+# Actual method call
+def first_name_vs_last_name_cleanup(array_of_input_strings)
+	# create output array variable
+	output_array = []
+	# iterate over the array_of_input_strings
+	for string in array_of_input_strings do
+	# for each string in the input array
+		# split string on '_'
+		string_split = string.split('_')
+		# assign left side of string split (index 0) as new variable
+		last_name = string_split[0]
+		# look at index 0 (first character of string), and apply upcase method. Add this to rest of original string
+		last_name_upper = last_name[0].upcase + last_name[1..-1]
+		# assign right side of string split (index 1) as new variable
+		first_name = string_split[1]
+		# look at index 0 (first character of string), and apply upcase method. Add this to rest of original string
+		first_name_upper = first_name[0].upcase + first_name[1..-1]
+		# interpolate "#{Firstname} #{Lastname}" as new string variable
+		clean_full_name = "#{first_name_upper} #{last_name_upper}"
+		# add interpolated string variable to output array
+		output_array.push(clean_full_name)
+	end
+		# return output array
+	return output_array
+end
+
+# Test Suite
+def assertEquals(actual, expected, testName)
+	if actual = expected then
+		puts "passed '#{testName}': expected '#{expected}', and got '#{actual}'"
+	else
+		puts "failed '#{testName}': expected '#{expected}', but got '#{actual}'"
+	end
+end
+
+input_strings = ['potter_harry', 'weasley_ronald', 'snape_severus']
+output_strings = first_name_vs_last_name_cleanup(input_strings)
+p assertEquals(input_strings, output_strings, 'It correctly formats the input strings into the proper Firstname Lastname format')
+
+```
+
 
 
 
@@ -60,7 +102,7 @@ PseudoCode practice exercise for a function to count the number of sheep in the 
 ```
 
 ```ruby
-# Actual function call
+# Actual method call
 def countSheep(barn)
 	# true == "sheep"
 	# false == "piglet"
