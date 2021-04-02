@@ -18,12 +18,11 @@ method first_name_vs_last_name_cleanup(array_of_input_strings)
 ```
 
 ```ruby
-# Actual method call
 def first_name_vs_last_name_cleanup(array_of_input_strings)
 	# create output array variable
 	output_array = []
 	# iterate over the array_of_input_strings
-	for string in array_of_input_strings do
+	array_of_input_strings.each do |string|
 	# for each string in the input array
 		# split string on '_'
 		string_split = string.split('_')
@@ -45,19 +44,38 @@ def first_name_vs_last_name_cleanup(array_of_input_strings)
 end
 
 # Test Suite
-def assertEquals(actual, expected, testName)
-	if actual = expected then
-		puts "passed '#{testName}': expected '#{expected}', and got '#{actual}'"
-	else
-		puts "failed '#{testName}': expected '#{expected}', but got '#{actual}'"
+def assert_arrays_equal(actual, expected, test_name)
+	has_same_lengths = true
+	has_same_values = true
+
+	if actual.length != expected.length
+		has_same_lengths = false
 	end
+
+	actual.each_with_index do |element, index|
+		if element != expected[index]
+			has_same_values = false
+			break
+		end
+	end
+
+	if has_same_lengths && has_same_values
+		puts "passed [#{test_name}]: expected '#{expected}', and got '#{actual}'"
+	else
+		puts "failed [#{test_name}]: expected '#{expected}', but got '#{actual}'"
+	end
+
 end
 
 input_strings = ['potter_harry', 'weasley_ronald', 'snape_severus']
 output_strings = first_name_vs_last_name_cleanup(input_strings)
-p assertEquals(input_strings, output_strings, 'It correctly formats the input strings into the proper Firstname Lastname format')
+expected_output = ['Harry Potter', 'Ronald Weasley', 'Severus Snape']
+
+assert_arrays_equal(output_strings, expected_output, 'It correctly formats the input strings into the proper "Firstname Lastname" format')
 
 ```
+
+
 
 ### PseudoCode Practice: Detect if a given word/string is a palindrome
 
@@ -81,19 +99,19 @@ def is_palindrome(string)
   end
 end
 
-
 # Test suite
-def assertEquals(actual, expected, testName)
-	if actual = expected then
-		puts "passed '#{testName}': expected '#{expected}', and got '#{actual}'"
+def assert_equals(actual, expected, test_name)
+	if actual == expected then
+		puts "passed [#{test_name}]: expected '#{expected}', and got '#{actual}'"
 	else
-		puts "failed '#{testName}': expected '#{expected}', but got '#{actual}'"
+		puts "failed [#{test_name}]: expected '#{expected}', but got '#{actual}'"
 	end
 end
 
-p assertEquals(is_palindrome('kayak'), true, 'It correctly returns true for a palindrome')
-p assertEquals(is_palindrome('kitten'), false, 'It correctly returns false for a non-palindrome')
+assert_equals(is_palindrome('kayak'), true, 'It correctly returns true for a palindrome')
+assert_equals(is_palindrome('kitten'), false, 'It correctly returns false for a non-palindrome')
 ```
+
 
 
 ### PseudoCode Practice: Count the number of sheep in the barn
@@ -120,23 +138,23 @@ p assertEquals(is_palindrome('kitten'), false, 'It correctly returns false for a
 
 ```ruby
 # Actual method call
-def countSheep(barn)
+def count_sheep(barn)
 	# true == "sheep"
 	# false == "piglet"
-	sheepCount = 0
+	sheep_count = 0
 
-	for animal in barn do
-		if animal == true then
-			sheepCount += 1
+	barn.each do |animal|
+		if animal == true
+			sheep_count += 1
 		end
 	end
 
-	if sheepCount == 0 then
+	if sheep_count == 0
 		prompt = "Oink oink, no sheep here!"
-	elsif sheepCount == 1 then
+	elsif sheep_count == 1
 		prompt = "There is 1 sheep in the barn!"
-	elsif sheepCount > 1 then
-		prompt = "There are #{sheepCount} sheep in the barn!"
+	elsif sheep_count > 1
+		prompt = "There are #{sheep_count} sheep in the barn!"
 	end
 
 	return prompt
@@ -144,18 +162,18 @@ end
 
 
 # Test suite
-def assertEquals(actual, expected, testName)
-	if actual = expected then
-		puts "passed '#{testName}': expected '#{expected}', and got '#{actual}'"
+def assert_equals(actual, expected, test_name)
+	if actual == expected then
+		puts "passed [#{test_name}]: expected '#{expected}', and got '#{actual}'"
 	else
-		puts "failed '#{testName}': expected '#{expected}', but got '#{actual}'"
+		puts "failed [#{test_name}]: expected '#{expected}', but got '#{actual}'"
 	end
 end
 
-# Test for no sheep
-assertEquals(countSheep([false, false, false, false]), "Oink oink, no sheep here!", "it correctly returns the prompt when no sheep are in the barn")
-# Test for one sheep
-assertEquals(countSheep([false, false, true, false]), "There is 1 sheep in the barn!", "it correctly returns the prompt when one sheep is in the barn")
-# Test for more than one sheep
-assertEquals(countSheep([false, true, true, false]), "There are 2 sheep in the barn!", "it correctly returns the prompt when more than one sheep is in the barn")
+# Test for 0 sheep
+assert_equals(count_sheep([false, false, false, false]), "Oink oink, no sheep here!", "it correctly returns the prompt when no sheep are in the barn")
+# Test for 1 sheep
+assert_equals(count_sheep([false, false, true, false]), "There is 1 sheep in the barn!", "it correctly returns the prompt when one sheep is in the barn")
+# Test for 2+ sheep
+assert_equals(count_sheep([false, true, true, false]), "There are 2 sheep in the barn!", "it correctly returns the prompt when more than one sheep is in the barn")
 ```
